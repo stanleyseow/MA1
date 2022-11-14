@@ -1,2 +1,2 @@
-# ma1
+# MA1
 Multimedia Authoring I
