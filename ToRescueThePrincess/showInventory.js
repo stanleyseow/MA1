@@ -38,13 +38,13 @@ class showInventory extends Phaser.Scene {
         this.keyimg7 = this.add.image (350,50,'keypng').setScrollFactor(0).setVisible(false).setScale(0.5);
 
         // Recv an event, call the method
-        this.events.on('inventory', this.updateInventory, this)
+        this.events.on('inventory', this.updateScreen, this)
     }
 
     update() {
     }
 
-    updateInventory(data) {
+    updateScreen(data) {
          console.log('Received event inventory', data)
 
          switch ( data.heart ) {
