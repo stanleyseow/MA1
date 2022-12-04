@@ -4,10 +4,11 @@ class city3 extends Phaser.Scene {
         super({ key: 'city3' });
 
         // Put global variable here
+        this.showGuard = true
     }
 
 
-    init(data) {
+    init(data) {;
         this.player = data.player
         this.inventory = data.inventory
     }
@@ -54,7 +55,7 @@ class city3 extends Phaser.Scene {
         this.player.x = 310;
         this.player.y = 500;
 
-        this.time.addEvent({ delay: 100, callback: this.showGuard, callbackScope: this, loop: true });
+        this.time.addEvent({ delay: 100, callback: this.showGuardfunc, callbackScope: this, loop: true });
 
 
         if ( this.inventory.displayHorse == 1) {
@@ -112,14 +113,20 @@ class city3 extends Phaser.Scene {
 
     }
 
-    showGuard() {
+    showGuardfunc() {
 
-        if ( this.guardGroup1.enable ) {
+        if ( this.showGuard == true ) {
             console.log("*** Hide guard")
-            this.guardGroup1.children.iterate( g => g.disableBody(true,true))
+            this.guardGroup1.children.iterate( g => g.setVisible(false))
+            this.guardGroup1.children.iterate( g => g.disableBody(true))
+            this.showGuard = false
         } else {
             console.log("*** Show guard")
-            this.guardGroup1.children.iterate( g => g.disableBody(false,false))
+            this.guardGroup1.children.iterate( g => g.setVisible(true))
+            this.guardGroup1.children.iterate( g => {
+                console.log(g)
+                g.enableBody(false, g.x, g.y, true) })
+            this.showGuard = true
         }
     }
 
