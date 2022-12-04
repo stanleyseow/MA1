@@ -55,7 +55,7 @@ class city3 extends Phaser.Scene {
         this.player.x = 310;
         this.player.y = 500;
 
-        this.time.addEvent({ delay: 100, callback: this.showGuardfunc, callbackScope: this, loop: true });
+        this.time.addEvent({ delay: 3000, callback: this.showGuardfunc, callbackScope: this, loop: true });
 
 
         if ( this.inventory.displayHorse == 1) {
