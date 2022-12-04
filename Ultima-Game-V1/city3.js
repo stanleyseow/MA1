@@ -54,6 +54,9 @@ class city3 extends Phaser.Scene {
         this.player.x = 310;
         this.player.y = 500;
 
+        this.time.addEvent({ delay: 100, callback: this.showGuard, callbackScope: this, loop: true });
+
+
         if ( this.inventory.displayHorse == 1) {
             this.horse = this.physics.add.sprite(100, 550, 'u3').play('horse').setScale(2);
             this.physics.add.collider(this.horse, this.guardGroup1);
@@ -107,6 +110,17 @@ class city3 extends Phaser.Scene {
             this.player.body.setVelocity(0);
         }
 
+    }
+
+    showGuard() {
+
+        if ( this.guardGroup1.enable ) {
+            console.log("*** Hide guard")
+            this.guardGroup1.children.iterate( g => g.disableBody(true,true))
+        } else {
+            console.log("*** Show guard")
+            this.guardGroup1.children.iterate( g => g.disableBody(false,false))
+        }
     }
 
     worldmap(player, tile) {
