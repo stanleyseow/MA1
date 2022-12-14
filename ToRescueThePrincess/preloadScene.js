@@ -34,17 +34,33 @@ class preloadScene extends Phaser.Scene {
       this.load.audio("smallhit","assets/smallhit.wav");
       this.load.audio("lose","assets/lose.mp3");
       
+      this.load.spritesheet('knife', 'assets/knife-32x32.png', {frameWidth: 32, frameHeight: 32});
 
 
     } // end of preload //
 
     create () {
 
+      this.dingSnd = this.sound.add("ding").setVolume(3);
+      this.hitSnd = this.sound.add("hit").setVolume(3);
+      this.smallhitSnd = this.sound.add("smallhit").setVolume(2);
+      this.dooropenSnd = this.sound.add("dooropen").setVolume(0.5);
+      this.winSnd = this.sound.add("win").setVolume(0.2);
+      this.loseSnd = this.sound.add("lose").setVolume(1);
+
       this.add.image (320,320,'introjpg')
       this.music = this.sound.add("bgmusic",{loop: true}).setVolume(0.06);
       // this.music = this.sound.add("preloadmusic",{loop: true}).setVolume(0.06);
 
       this.music.play();
+
+      this.anims.create({
+        key: "knifeAnim",
+        frames: this.anims.generateFrameNumbers("knife", { start: 0, end: 15 }),
+        frameRate: 20,
+        repeat: -1,
+      });
+
 
         this.anims.create({ 
             key:'left', 
@@ -243,7 +259,7 @@ class preloadScene extends Phaser.Scene {
             playerPos.x = 30
             playerPos.y = 260
             playerPos.dir = "right"
-            this.scene.start("gameScene",{playerPos: playerPos});
+            this.scene.start("world",{playerPos: playerPos});
             }, this );
             
 

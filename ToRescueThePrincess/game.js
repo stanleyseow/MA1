@@ -20,12 +20,13 @@ var config = {
     backgroundColor: '#422835', 
     pixelArt: true,
     //// Add all scenes below in the array
-    scene: [preloadScene,scene1,scene2,instructions,instructions2,gameScene,room1,room2,room3,room4,gameOver,showInventory]
+    scene: [preloadScene,scene1,scene2,instructions,instructions2,world,room1,room2,room3,room4,gameOver,showInventory]
 };
 
 var game = new Phaser.Game(config);
 
-window.key= 0
+window.key= 3
 window.heart = 3
+window.knife = 3
 
 }

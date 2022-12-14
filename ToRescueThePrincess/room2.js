@@ -239,7 +239,7 @@ class room2 extends Phaser.Scene {
         playerPos.x = 833
         playerPos.y = 456
         playerPos.dir = "down"
-        this.scene.start("gameScene", {playerPos: playerPos})
+        this.scene.start("world", {playerPos: playerPos})
 
         this.dooropenSnd.play();
     }
