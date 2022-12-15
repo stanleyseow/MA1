@@ -27,13 +27,13 @@ class world extends Phaser.Scene {
         this.load.atlas('up', 'assets/knight_walk_up.png', 'assets/knight_walk_up.json');
         this.load.atlas('down', 'assets/knight_walk_down.png', 'assets/knight_walk_down.json');
 
-        this.load.audio("ding","assets/ding.mp3");
-        this.load.audio("bgmusic","assets/bg_music.mp3");
-        this.load.audio("hit","assets/hit.wav");
-        this.load.audio("smallhit","assets/smallhit.wav");
-        this.load.audio("dooropen","assets/doorOpen.wav");
-        this.load.audio("win","assets/win.wav");
-        this.load.audio("lose","assets/lose.mp3");
+        // this.load.audio("ding","assets/ding.mp3");
+        // this.load.audio("bgmusic","assets/bg_music.mp3");
+        // this.load.audio("hit","assets/hit.wav");
+        // this.load.audio("smallhit","assets/smallhit.wav");
+        // this.load.audio("dooropen","assets/doorOpen.wav");
+        // this.load.audio("win","assets/win.wav");
+        // this.load.audio("lose","assets/lose.mp3");
 
     } // end of preload //
 
@@ -52,10 +52,12 @@ class world extends Phaser.Scene {
 
     this.dingSnd = this.sound.add("ding").setVolume(3);
     this.hitSnd = this.sound.add("hit").setVolume(3);
-    this.smallhitSnd = this.sound.add("smallhit").setVolume(2);
+    this.smallhitSnd = this.sound.add("smallhit").setVolume(0.5);
     this.dooropenSnd = this.sound.add("dooropen").setVolume(0.5);
     this.winSnd = this.sound.add("win").setVolume(0.2);
     this.loseSnd = this.sound.add("lose").setVolume(1);
+    this.shoot1Snd = this.sound.add("shoot1").setVolume(0.1);
+
     
     // this.bgmusicSnd = this.sound.add("bgmusic")
 
@@ -95,7 +97,7 @@ class world extends Phaser.Scene {
 
     this.player.setCollideWorldBounds(true); // don't go out of the this.map
 
-    this.knife = this.physics.add.sprite(this.player.x + 100, this.player.y, 'knife').play('knifeAnim')
+    this.knife = this.physics.add.sprite(this.player.x , this.player.y - 32, 'knife').play('knifeAnim')
     this.knife.setVisible(false)
     this.knife.setCollideWorldBounds(true)
 
@@ -259,45 +261,19 @@ class world extends Phaser.Scene {
 
         if (this.cursors.left.isDown && this.spaceDown.isDown)
         {
-            console.log("space and left")
-            this.knife.enableBody(false,this.player.x, this.player.y, true, true )
-            //this.knife.setVisible(true)
-            this.knife.x = this.player.x
-            this.knife.y = this.player.y
-            this.knife.setVelocityX(-500);
-            this.knife.anims.play('knifeAnim');
-            window.knife--
+            this.throwKnife(this.player.x,this.player.y,0)
         } 
         else if (this.cursors.right.isDown && this.spaceDown.isDown)
         {
-            console.log("space and right")
-            this.knife.enableBody(false,this.player.x, this.player.y, true, true )
-            //this.knife.setVisible(true)
-            this.knife.x = this.player.x
-            this.knife.y = this.player.y
-            this.knife.setVelocityX(500);
-            this.knife.anims.play('knifeAnim');
-            window.knife--
+          this.throwKnife(this.player.x,this.player.y,1)
         }
         else if (this.cursors.up.isDown && this.spaceDown.isDown)
         {
-            console.log("space and up")
-            this.knife.setVisible(true)
-            this.knife.x = this.player.x
-            this.knife.y = this.player.y
-            this.knife.setVelocityY(-500);
-            this.knife.anims.play('knifeAnim');
-            window.knife--
+          this.throwKnife(this.player.x,this.player.y,2)
         }
         else if (this.cursors.down.isDown && this.spaceDown.isDown)
         {
-            console.log("space and down")
-            this.knife.setVisible(true)
-            this.knife.x = this.player.x
-            this.knife.y = this.player.y
-            this.knife.setVelocityY(500);
-            this.knife.anims.play('knifeAnim');
-            window.knife--
+          this.throwKnife(this.player.x,this.player.y,3)
         }
         else if (this.cursors.left.isDown) 
         {
@@ -326,6 +302,34 @@ class world extends Phaser.Scene {
 
 
     } // end of update // 
+
+    throwKnife(x,y,dir) {
+      console.log("*** throw knife")
+      let speed = 500;
+      this.knife.enableBody(false,x, y, true, true )
+      this.knife.x = x
+      this.knife.y = y
+      this.shoot1Snd.play()
+
+      switch (dir) {
+        // 0 - left, 1 - right, 2 - up , 3 - down
+        case 0 : 
+          this.knife.setVelocityX(-speed);
+          break;
+        case 1 : 
+          this.knife.setVelocityX(speed);
+          break;  
+        case 2 : 
+          this.knife.setVelocityY(-speed);
+          break;  
+        case 3 : 
+          this.knife.setVelocityY(speed);
+          break;  
+      }
+      
+      this.knife.anims.play('knifeAnim');
+
+    }
 
     collectKey (player,key1) {
         console.log("collectKey")

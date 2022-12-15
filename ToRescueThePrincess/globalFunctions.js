@@ -47,7 +47,7 @@ function updateInventory() {
   function killGuard(knife,guard) {
     console.log("*** knife hit guard");
 
-    this.hitSnd.play();
+    this.smallhitSnd.play();
 
     // Shake screen
     this.cameras.main.shake(150);
@@ -59,15 +59,3 @@ function updateInventory() {
 
 }
 
-function collectKnife(player, knife) {
-  console.log("*** collect knife");
-
-  //this.smallHitSnd.play();
-  window.knife++
-
-  knife.disableBody(true, true);
-
-  //this.updateInventory()
-  updateInventory.call(this)
-
-}

@@ -28,11 +28,12 @@ class preloadScene extends Phaser.Scene {
       this.load.audio("ding","assets/ding.mp3");
       this.load.audio("bgmusic","assets/bg_music.mp3");
       this.load.audio("preloadmusic","assets/preloadmusic.mp3");
-      this.load.audio("hit","assets/hit.wav");
-      this.load.audio("dooropen","assets/doorOpen.wav");
-      this.load.audio("win","assets/win.wav");
-      this.load.audio("smallhit","assets/smallhit.wav");
+      this.load.audio("hit","assets/hit.mp3");
+      this.load.audio("dooropen","assets/doorOpen.mp3");
+      this.load.audio("win","assets/win.mp3");
+      this.load.audio("smallhit","assets/smallhit.mp3");
       this.load.audio("lose","assets/lose.mp3");
+      this.load.audio("shoot1","assets/shoot1.mp3");
       
       this.load.spritesheet('knife', 'assets/knife-32x32.png', {frameWidth: 32, frameHeight: 32});
 
@@ -47,6 +48,7 @@ class preloadScene extends Phaser.Scene {
       this.dooropenSnd = this.sound.add("dooropen").setVolume(0.5);
       this.winSnd = this.sound.add("win").setVolume(0.2);
       this.loseSnd = this.sound.add("lose").setVolume(1);
+      this.shoot1Snd = this.sound.add("shoot1").setVolume(2);
 
       this.add.image (320,320,'introjpg')
       this.music = this.sound.add("bgmusic",{loop: true}).setVolume(0.06);
