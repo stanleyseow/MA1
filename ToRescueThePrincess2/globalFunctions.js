@@ -60,11 +60,13 @@ function updateInventory() {
 }
 
 function destroyKnife(knife) {
-  console.log("Destroy knife objects", knife)
+  //console.log("Destroy knife objects", knife)
   knife.destroy();
 }
 
 function movement() {
+
+  this.velocity = 300;
 
     if (this.cursors.left.isDown && this.spaceDown.isDown)
     {
@@ -129,26 +131,31 @@ function movement() {
     }
     else if (this.cursors.left.isDown) 
     {
-        this.player.setVelocityX(-200);
-        this.player.anims.play('left', true);
+        this.player.left(this.velocity);
+        //this.player.setVelocityX(-200);
+        //this.player.anims.play('left', true);
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.setVelocityX(200);
-        this.player.anims.play('right', true);
+        this.player.right(this.velocity);
+        //this.player.setVelocityX(200);
+        //this.player.anims.play('right', true);
     }
     
     else if (this.cursors.up.isDown)
     {
-        this.player.setVelocityY(-200);
-        this.player.anims.play('up', true);
+        this.player.up(this.velocity);
+        //this.player.setVelocityY(-200);
+        //this.player.anims.play('up', true);
     }
     else if (this.cursors.down.isDown)
     {
-        this.player.setVelocityY(200);
-        this.player.anims.play('down', true);
+        this.player.down(this.velocity);
+        //this.player.setVelocityY(200);
+        //this.player.anims.play('down', true);
     } else {
-        this.player.setVelocity(0);
-        this.player.anims.stop()
+        this.player.stop();
+        //this.player.setVelocity(0);
+        //this.player.anims.stop()
     }
 }
