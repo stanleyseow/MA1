@@ -1,0 +1,215 @@
+{
+  "frames": [
+    {
+      "filename": "walk 01",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 02",
+      "frame": {
+        "x": 0,
+        "y": 135,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 03",
+      "frame": {
+        "x": 0,
+        "y": 270,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 05",
+      "frame": {
+        "x": 0,
+        "y": 405,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 06",
+      "frame": {
+        "x": 0,
+        "y": 540,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 07",
+      "frame": {
+        "x": 0,
+        "y": 675,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 04",
+      "frame": {
+        "x": 0,
+        "y": 135,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "walk 08",
+      "frame": {
+        "x": 0,
+        "y": 540,
+        "w": 134,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "hiro walk.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 134,
+      "h": 810
+    },
+    "scale": 1
+  }
+}

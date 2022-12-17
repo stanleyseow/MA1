@@ -1,0 +1,115 @@
+{
+  "frames": [
+    {
+      "filename": "hiro attack 01",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 134
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "hiro attack 02",
+      "frame": {
+        "x": 0,
+        "y": 134,
+        "w": 134,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 134
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "hiro attack 03",
+      "frame": {
+        "x": 0,
+        "y": 268,
+        "w": 134,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 134
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "hiro attack 04",
+      "frame": {
+        "x": 0,
+        "y": 402,
+        "w": 134,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 134,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 134,
+        "h": 134
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "hiro attack.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 134,
+      "h": 536
+    },
+    "scale": 1
+  }
+}
