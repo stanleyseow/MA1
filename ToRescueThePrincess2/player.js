@@ -17,10 +17,13 @@ class Player {
     create() {
 
         this.PlayerContainer = this.scene.add.container(this.x, this.y);
-        let playerObj = this.scene.add.sprite(0, 0, this.sprite)
-        playerObj.setScale(this.scale).setOrigin(-0.1,-0.2)
+        this.playerObj = this.scene.add.sprite(0, 0, this.sprite)
+        this.playerObj.setScale(this.scale)
+        this.scene.add.existing(this.playerObj);
 
-        let username = this.scene.add.text(-10, -20, this.username, {
+
+
+        let username = this.scene.add.text(-10, -30, this.username, {
           font: '14px Courier',
           fill: '#ffff00',
           backgroundColor: "#00000",
@@ -28,15 +31,21 @@ class Player {
 
         this.healthRect = this.scene.add.graphics(0,0)
         this.healthRect.fillStyle(0x000000)
-        this.healthRect.fillRect(0,0,this.maxHealth,10)
+        this.healthRect.fillRect(0,-15,this.maxHealth,10)
         this.healthRect.fillStyle(0x00ff00)
-        this.healthRect.fillRect(0,0,this.initHealth,10)
+        this.healthRect.fillRect(0,-15,this.initHealth,10)
 
         this.healthRect.lineStyle(2, 0xffffff, 1)
-        this.healthRect.strokeRect(0,0,this.maxHealth,10)
+        this.healthRect.strokeRect(0,-15,this.maxHealth,10)
             
-        this.PlayerContainer.add([this.healthRect, playerObj, username]);
+        this.PlayerContainer.add([this.healthRect, this.playerObj, username]);
+        
+        // Add object to existing scene
+        //this.scene.add.existing(this.PlayerContainer);
+
+        // Enable physics
         this.scene.physics.world.enable(this.PlayerContainer);
+
         this.PlayerContainer.setDepth(1)
         this.scene.cameras.main.startFollow(this.PlayerContainer);
 
@@ -53,28 +62,28 @@ class Player {
         this.PlayerContainer.body.velocity.x = -speed;
         this.x = this.PlayerContainer.x
         this.y = this.PlayerContainer.y
-        //this.player.anims.play('left', true);
+        this.playerObj.play('left', true)
     }
 
     right(speed) {
         this.PlayerContainer.body.velocity.x = speed;
-        //this.player.anims.play('left', true);
         this.x = this.PlayerContainer.x
         this.y = this.PlayerContainer.y
+        this.playerObj.play('right', true)
     }
 
     up(speed) {
         this.PlayerContainer.body.velocity.y = -speed;
-        //this.player.anims.play('left', true);
         this.x = this.PlayerContainer.x
         this.y = this.PlayerContainer.y
+        this.playerObj.play('up', true);
     }
 
     down(speed) {
         this.PlayerContainer.body.velocity.y = speed;
-        //this.player.anims.play('left', true);
         this.x = this.PlayerContainer.x
         this.y = this.PlayerContainer.y
+        this.playerObj.play('down', true);
     }
 
     stop() {
@@ -82,6 +91,7 @@ class Player {
         this.PlayerContainer.body.velocity.y = 0;
         this.x = this.PlayerContainer.x
         this.y = this.PlayerContainer.y
+        this.playerObj.stop()
     }
 
     
@@ -93,17 +103,17 @@ class Player {
     increaseHealthBar(num) {
         this.initHealth = this.initHealth + num
         this.healthRect.fillStyle(0x000000)
-        this.healthRect.fillRect(0,0,this.maxHealth,10)
+        this.healthRect.fillRect(0,-15,this.maxHealth,10)
         this.healthRect.fillStyle(0x00ff00)
-        this.healthRect.fillRect(0,0,this.initHealth,10)
+        this.healthRect.fillRect(0,-15,this.initHealth,10)
     }
 
     decreaseHealthBar(num){
         this.initHealth = this.initHealth - num
         this.healthRect.fillStyle(0x000000)
-        this.healthRect.fillRect(0,0,this.maxHealth,10)
+        this.healthRect.fillRect(0,-15,this.maxHealth,10)
         this.healthRect.fillStyle(0x00ff00)
-        this.healthRect.fillRect(0,0,this.initHealth,10)
+        this.healthRect.fillRect(0,-15,this.initHealth,10)
     }
 
 
