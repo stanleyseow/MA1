@@ -1,5 +1,5 @@
 # ToRescueThePrincess2
 
-## Use player Class
+## Use player Class with container + hearthRect
 ## Use knife Class
 
