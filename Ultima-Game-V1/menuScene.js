@@ -31,6 +31,10 @@ class menuScene extends Phaser.Scene {
     this.load.audio("ping", "assets/ping.mp3");
     this.load.audio("bgMusic", "assets/U3_wanderer.ogg");
     this.load.audio("moongate", "assets/escape.wav");
+
+    this.load.image("fire", "http://labs.phaser.io/assets/particles/muzzleflash3.png");
+    this.load.image("ice", "http://labs.phaser.io/assets/particles/blue.png");
+
   }
 
   create() {
@@ -40,7 +44,8 @@ class menuScene extends Phaser.Scene {
     // Add any sound and music here
     // ( 0 = mute to 1 is loudest )
     this.music = this.sound
-      .add("bgMusic", {
+      .add("bgMusic", 
+      {
         loop: true,
       })
       .setVolume(0.2); // 30% volume
@@ -249,19 +254,19 @@ class menuScene extends Phaser.Scene {
     this.wizard = this.add.sprite(140, 550, "u3").play("wiz").setScale(4);
     this.cleric = this.add.sprite(90, 550, "u3").play("cle").setScale(4);
 
-    // Dragon tweens
-    this.time.addEvent({
-      delay: 1000,
-      callback: this.moveRightLeft,
-      callbackScope: this,
-      loop: false,
-    });
-    this.time.addEvent({
-      delay: 200,
-      callback: this.moveRightLeft2,
-      callbackScope: this,
-      loop: false,
-    });
+    // // Dragon tweens
+    // this.time.addEvent({
+    //   delay: 1000,
+    //   callback: this.moveRightLeft,
+    //   callbackScope: this,
+    //   loop: false,
+    // });
+    // this.time.addEvent({
+    //   delay: 200,
+    //   callback: this.moveRightLeft2,
+    //   callbackScope: this,
+    //   loop: false,
+    // });
 
     // Define objects for player and inventory
     this.player = {};

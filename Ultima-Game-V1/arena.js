@@ -1,10 +1,30 @@
+const { AddGameObject, AddTimerEvent } = PhaserPluginInspector;
+
+// AddAnimationState,
+// AddArcadeBody,
+// AddGameObject,
+// AddGroup,
+// AddKeys,
+// AddTimerEvent,
+// AddParticleEmitter
+
 class arena extends Phaser.Scene {
 
     constructor() {
         super({ key: 'arena' });
 
+
         // Put global variable here, initialised on game load
         this.playerPOS = {}
+        this.particles = {
+            x:0,
+            y:0
+        }
+        this.particles2 = {
+            x:0,
+            y:0
+        }
+
     }
 
 
@@ -23,11 +43,24 @@ class arena extends Phaser.Scene {
         this.enemyCount = 0;
     }
 
-    preload() {
-    }
+
+     preload() {
+        this.load.scripts('inspector', [
+          'https://cdn.jsdelivr.net/npm/tweakpane@3.1.0/dist/tweakpane.js',
+          'https://cdn.jsdelivr.net/npm/phaser-plugin-inspector@1.9.0/dist/phaser-plugin-inspector.umd.js',
+        ]);
+        this.load.once('complete', () => {
+          PhaserPluginInspector.Install(this.plugins);
+        });
+        console.log(PhaserPluginInspector);
+      }
+
 
     create() {
         console.log('*** arena');
+
+        const { pane } = this.inspectorScene;
+        this.pane = pane
 
         console.log('enemyCount: ', this.enemyCount)
 
@@ -47,7 +80,7 @@ class arena extends Phaser.Scene {
         this.physics.world.bounds.height = map.heightInPixels
         console.log(map.widthInPixels, map.heightInPixels)
 
-        this.time.addEvent({ delay: 2000, callback: this.moveDownUp, callbackScope: this, loop: false });
+        this.timer1 = this.time.addEvent({ delay: 2000, callback: this.moveDownUp, callbackScope: this, loop: false });
         //this.time.addEvent({ delay: 4000, callback: this.moveDownUp3, callbackScope: this, loop: true });
 
 
@@ -89,6 +122,9 @@ class arena extends Phaser.Scene {
 
         this.player = this.physics.add.sprite(this.player.x, this.player.y, 'u3').play('ranger').setScale(2);
         //this.player.setCollideWorldBounds(true);
+        this.player.setName("this.player")
+        AddGameObject( this.player, this.pane, { title: 'Player' } )
+        AddTimerEvent( this.timer1, pane, { title: 'Timer' })
 
         this.fireball = this.physics.add.sprite(0, 0, 'u3').play('fireball').setScale(2);
         this.fireball.setVisible(false)
@@ -129,24 +165,22 @@ class arena extends Phaser.Scene {
         }, this);
   
         /////////////////////////////////////  
-
-
-
-
     }
 
     update() {
 
-
         //this.physics.moveToObject(this.enemies.getChildren()[0], this.player, 30, 5000)
         //this.physics.moveToObject(this.enemies.getChildren()[4], this.player, 30, 5000)
+
+
 
         let speed = 256;
 
         if (this.fireball.y < 0) {
             this.fireball.setVisible(false)
+            this.fireballP.stop()
         }
-
+        
         if (this.cursors.left.isDown) {
             this.player.body.setVelocityX(-speed);
         } else if (this.cursors.right.isDown) {
@@ -199,17 +233,41 @@ class arena extends Phaser.Scene {
             return
         }
 
+
         this.inventory.fireball--;
         // Update display
         this.updateDisplay()
 
-
         this.shooterSnd.play();
         this.fireball.setVisible(true)
         this.fireball.body.setEnable(true)
-        this.fireball.body.setVelocityY(-500)
+        this.fireball.body.setVelocityY(-400)
         this.fireball.x = this.player.x
         this.fireball.y = this.player.y
+
+        this.particles = this.add.particles('fire');
+
+        this.fireballP = this.particles.createEmitter({
+            alpha: { start: 1, end: 0 },
+            scale: { start: 0.1, end: 1.0 },
+            //tint: { start: 0xff945e, end: 0xff945e },
+            //speedY: -500,
+            //accelerationY: -500,
+            angle: { min: -85, max: -95 },
+            //rotate: { min: -180, max: 180 },
+            lifespan: { min: 0, max: 500 },
+            blendMode: 'ADD',
+            frequency: 110,
+            maxParticles: 20,
+            x: this.player.x,
+            y: this.player.y
+            
+        });
+
+        this.fireballP.startFollow(this.fireball)
+
+        console.log(this.particles)
+
     }
 
     castSpell() {
@@ -240,9 +298,27 @@ class arena extends Phaser.Scene {
         this.iceball.body.setEnable(true)
         this.iceball.setVisible(true)
 
-        this.physics.moveToObject(this.iceball, enemy, 30, 200);
+        this.physics.moveToObject(this.iceball, enemy, 30, 400);
+
+        this.particles2 = this.add.particles('ice');
+        this.iceballP = this.particles2.createEmitter({
+            alpha: { start: 1, end: 0 },
+            scale: { start: 0.1, end: 1.0 },
+            //tint: { start: 0xff945e, end: 0xff945e },
+            //speedY: -500,
+            //accelerationY: -500,
+            angle: { min: -85, max: -95 },
+            //rotate: { min: -180, max: 180 },
+            lifespan: { min: 0, max: 500 },
+            blendMode: 'ADD',
+            frequency: 110,
+            maxParticles: 20,
+            x: this.player.x,
+            y: this.player.y
+        });
+
+        this.iceballP.startFollow(this.iceball)
         //this.iceball.setVisible(false)
-        
     }
 
     killEnemy2(iceball, enemy) {
@@ -252,6 +328,8 @@ class arena extends Phaser.Scene {
         enemy.body.setEnable(false)
         iceball.setVisible(false)
         iceball.body.setEnable(false)
+
+        this.iceballP.stop();
 
         this.enemyCount++
         console.log('enemyCount: ', this.enemyCount)
@@ -270,6 +348,8 @@ class arena extends Phaser.Scene {
         enemy.body.setEnable(false)
         fireball.setVisible(false)
         fireball.body.setEnable(false)
+
+        this.fireballP.stop();
 
         this.enemyCount++
         console.log('enemyCount: ', this.enemyCount)

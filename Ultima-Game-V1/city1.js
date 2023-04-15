@@ -79,11 +79,15 @@
         console.log('city1 to world');
 
         // Set position beside city1 in worldmap
-        player.x = 120;
-        player.y = 500;
-        this.scene.start('world', {
-            player: player,  inventory : this.inventory
-        });
+        player.x = 137;
+        player.y = 491;
+        this.scene.start('world'
+        , 
+        {
+            player: player,  
+            inventory : this.inventory
+        }
+        );
     }
 
     collectChest(player, tile) {

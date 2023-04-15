@@ -4,11 +4,11 @@ class city3 extends Phaser.Scene {
         super({ key: 'city3' });
 
         // Put global variable here
-        this.showGuard = true
+        this.showGuard = true;
     }
 
 
-    init(data) {;
+    init(data) {
         this.player = data.player
         this.inventory = data.inventory
     }

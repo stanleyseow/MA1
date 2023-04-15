@@ -53,23 +53,38 @@ class world extends Phaser.Scene {
                         paladinPos.y * this.zoomFactor, 'u3').play('pal').setScale(this.zoomFactor);
         this.fighter = this.physics.add.sprite(fighterPos.y * this.zoomFactor, 
                         fighterPos.y * this.zoomFactor, 'u3').play('fig').setScale(this.zoomFactor);
-
         this.cleric = this.physics.add.sprite(270 , 500, 'u3').play('cle').setScale(this.zoomFactor);
-
-
         this.wizard = this.physics.add.sprite(250, 750, 'u3').play('wiz').setScale(this.zoomFactor);
-
         this.thief = this.physics.add.sprite(thiefPos.x*2, thiefPos.y*2, 'u3').play('thi').setScale(this.zoomFactor);
         this.val = this.physics.add.sprite(valkriePos.x*2,valkriePos.y*2, 'u3').play('val').setScale(this.zoomFactor);
 
-        // Cleric move right & left
-        this.time.addEvent({ delay: 1000, callback: this.moveRightLeft, callbackScope: this, loop: false });
+        // New tweens for 3.60
+        this.tweens.add({
+            targets: this.cleric,
+            x: 470,
+            yoyo: true,
+            duration: 3000,
+            repeat: -1
+          })
 
-        // Fighter move up & down
-        this.time.addEvent({ delay: 1000, callback: this.moveDownUp, callbackScope: this, loop: false });
+          this.tweens.add({
+            targets: this.fighter,
+            y: 200,
+            yoyo: true,
+            duration: 3000,
+            repeat: -1
+          })
+
+          this.tweens.add({
+            targets: this.paladin,
+            y: 300,
+            yoyo: true,
+            duration: 2000,
+            repeat: -1
+          })
 
         // move in circles
-        this.time.addEvent({ delay: 1000, callback: this.moveSquare, callbackScope: this, loop: false });
+        //this.time.addEvent({ delay: 1000, callback: this.moveSquare, callbackScope: this, loop: false });
 
         this.mapLayer.setTileIndexCallback(10, this.dungeon, this);
 
@@ -196,70 +211,6 @@ class world extends Phaser.Scene {
             player: player, 
             inventory : this.inventory,
         })
-    }
-
-    moveRightLeft() {
-        //console.log('moveRightLeft')
-        this.tweens.timeline({
-            targets: this.cleric,
-            loop: -1, // loop forever
-            ease: 'Linear',
-            duration: 2000,
-            tweens: [
-                {
-                    x: 220,
-                },
-                {
-                    x: 270,
-                },
-            ]
-        });
-    }
-
-    moveDownUp() {
-        //console.log('moveDownUp')
-        this.tweens.timeline({
-            targets: [this.fighter,this.paladin],
-            ease: 'Linear',
-            loop: -1, // loop forever
-            duration: 2000,
-            tweens: [
-                {
-                    y: 400,
-                },
-                {
-                    y: 200,
-                },
-                {
-                    y: 400,
-                },
-            ]
-        });
-    }
-
-    moveSquare() {
-        //console.log('moveDownUp')
-        this.tweens.timeline({
-            // 200,200 starting point
-            targets: [this.wizard],
-            ease: 'Linear',
-            loop: -1, // loop forever
-            duration: 1000,
-            tweens: [
-                {
-                    x: 400,
-                },
-                {
-                    y: 850,
-                },
-                {
-                    x: 250,
-                },
-                {
-                    y: 750,
-                },
-            ]
-        });
     }
 
 } //////////// end of class world ////////////////////////
