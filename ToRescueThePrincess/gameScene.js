@@ -73,12 +73,8 @@ class gameScene extends Phaser.Scene {
     //this.deco2Layer = map.createLayer('deco 2',tilesArray,0,0).setScale(2)
     this.doorLayer = map.createLayer('door', tilesArray, 0, 0).setScale(2)
 
-
-
     this.physics.world.bounds.width = this.bgLayer.width * 2;
     this.physics.world.bounds.height = this.bgLayer.height * 2;
-
-
 
     // load player into phytsics
     this.player = this.physics.add.sprite(
@@ -122,9 +118,7 @@ class gameScene extends Phaser.Scene {
       repeat: -1
     })
 
-    // this.guard1.setPipeline('Light2D').setAlpha(0.2);
-    // this.guard2.setPipeline('Light2D').setAlpha(0.2);
-    // this.guard3.setPipeline('Light2D').setAlpha(0.2);
+
 
     this.wallLayer.setCollisionByExclusion(-1, true);
 
@@ -158,19 +152,24 @@ class gameScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(0x000000);
 
     // Add fog of war lights
-    // this.bgLayer.setPipeline('Light2D').setAlpha(0.1);
-    // this.floorLayer.setPipeline('Light2D').setAlpha(0.1);
-    // this.wallLayer.setPipeline('Light2D').setAlpha(0.1);
-    // //this.decoLayer.setPipeline('Light2D').setAlpha(0.1);
-    // //this.deco2Layer.setPipeline('Light2D').setAlpha(0.1);
-    // this.doorLayer.setPipeline('Light2D').setAlpha(0.1);
 
-    // this.lights.enable();
-    // this.lights.setAmbientColor(0x080808);
-    // this.spotlight=this.lights
-    //       .addLight(this.player.x, this.player.y)
-    //       .setRadius(150,150)
-    //       .setIntensity(20);     
+    this.guard1.setPipeline('Light2D').setAlpha(0.2);
+    this.guard2.setPipeline('Light2D').setAlpha(0.2);
+    this.guard3.setPipeline('Light2D').setAlpha(0.2);
+
+    this.bgLayer.setPipeline('Light2D').setAlpha(0.1);
+    this.floorLayer.setPipeline('Light2D').setAlpha(0.1);
+    this.wallLayer.setPipeline('Light2D').setAlpha(0.1);
+    //this.decoLayer.setPipeline('Light2D').setAlpha(0.1);
+    //this.deco2Layer.setPipeline('Light2D').setAlpha(0.1);
+    this.doorLayer.setPipeline('Light2D').setAlpha(0.1);
+
+    this.lights.enable();
+    this.lights.setAmbientColor(0x080808);
+    this.spotlight=this.lights
+          .addLight(this.player.x, this.player.y)
+          .setRadius(150,150)
+          .setIntensity(20);     
 
     // start another scene in parallel
     this.scene.launch("showInventory");
@@ -180,8 +179,8 @@ class gameScene extends Phaser.Scene {
   update() {
 
     // spotlight follows player movement
-    //this.spotlight.x=this.player.x+5;
-    //this.spotlight.y=this.player.y-5;
+    this.spotlight.x=this.player.x+5;
+    this.spotlight.y=this.player.y-5;
 
     if (
       this.player.x > 870 &&
