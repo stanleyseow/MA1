@@ -1,5 +1,5 @@
-# ToRescueThePrincess2
+# ToRescueThePrincess2 with 
 
-## Use player Class with container + hearthRect
-## Use knife Class
-
+- common global functions
+- top bar showInventory
+- knife objects

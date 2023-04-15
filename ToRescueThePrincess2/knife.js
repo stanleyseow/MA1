@@ -35,6 +35,7 @@ class Knife extends Phaser.Physics.Arcade.Sprite {
 
     // destroy knife
     destroy() {
+        // console.log("destroy: ", this)
         this.disableBody(true,true)
     }
 
@@ -43,6 +44,7 @@ class Knife extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta);
 
         // Reset the knifes  when it reaches end of screen
+        // Not needed if collider is turn on with timeouts
         if (this.x < 0 || this.x > 1200) {
             this.disableBody(true,true)
             
