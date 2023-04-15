@@ -9,4 +9,7 @@ Multimedia Authoring I
 
 [https://stanleyseow.github.io/MA1/Castaway/](https://stanleyseow.github.io/MA1/Castaway/)
 
+[https://stanleyseow.github.io/MA1/animation-fxGlow/](https://stanleyseow.github.io/MA1/animation-fxGlow/)
+
+
 
