@@ -7,9 +7,9 @@ Multimedia Authoring I
 
 [https://stanleyseow.github.io/MA1/Ultima-Game-V1/](https://stanleyseow.github.io/MA1/Ultima-Game-V1/) Tweens updated 
 
-[https://stanleyseow.github.io/MA1/Castaway/](https://stanleyseow.github.io/MA1/Castaway/)
+[https://stanleyseow.github.io/MA1/Castaway/](https://stanleyseow.github.io/MA1/Castaway/) Spacebar + Arrow Keys updates 
 
-[https://stanleyseow.github.io/MA1/animation-fxGlow/](https://stanleyseow.github.io/MA1/animation-fxGlow/) ( 3.60 FX new features )
+[https://stanleyseow.github.io/MA1/animation-fxGlow/](https://stanleyseow.github.io/MA1/animation-fxGlow/) 3.60 FX new features 
 
 
 
